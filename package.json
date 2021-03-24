@@ -1,15 +1,19 @@
 {
   "name": "naver-mailer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple Naver Mailer",
   "main": "index.js",
   "scripts": {
     "start": "node index"
   },
   "keywords": ["mail", "mailer", "naver"],
-  "author": "",
+  "author": "sujang958",
   "license": "MIT",
   "dependencies": {
     "nodemailer": "^6.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sujang958/naver-mailer"
   }
 }
