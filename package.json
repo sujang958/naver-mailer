@@ -1,12 +1,16 @@
 {
   "name": "naver-mailer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple Naver Mailer",
   "main": "index.js",
   "scripts": {
     "start": "node index"
   },
-  "keywords": ["mail", "mailer", "naver"],
+  "keywords": [
+    "mail",
+    "mailer",
+    "naver"
+  ],
   "author": "sujang958",
   "license": "MIT",
   "dependencies": {
