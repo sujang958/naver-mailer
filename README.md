@@ -8,7 +8,7 @@ $ npm install --save naver-mailer
 ```  
 
 ## Example
-```
+```js
 const NaverMail = require('naver-mailer');
 const mailer = new NaverMail('id', 'super secret password');
 
