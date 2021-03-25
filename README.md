@@ -7,7 +7,7 @@
 ```
 $ npm install naver-mailer
 ```  
-## yarn
+### yarn
 ```
 $ yarn add naver-mailer
 ```  
