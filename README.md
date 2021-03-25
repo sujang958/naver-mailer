@@ -17,5 +17,21 @@ $ yarn add naver-mailer
 const NaverMail = require('naver-mailer');
 const mailer = new NaverMail('id', 'super secret password');
 
-mailer.send(mailer.createMailOption('to@to.com', 'title', 'description', false))
-```
+mailer.send(mailer.createMailOption('to@to.com', 'title', 'description', false));
+```  
+```javascript
+const NaverMail = require('naver-mailer');
+const mailer = new NaverMail('id', 'super secret password');
+
+mailer.createMailOption('to@to.com', 'title', 'description', false);
+mailer.send();
+```  
+### Add Attachments
+```javascript
+const NaverMail = require('naver-mailer');
+const mailer = new NaverMail('id', 'super secret password');
+
+mailer.createMailOption('to@to.com', 'title', 'description');
+mailer.addAttachments('./your_file_path', 'this_is_option');
+mailer.send();
+```  
