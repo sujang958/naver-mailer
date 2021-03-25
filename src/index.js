@@ -8,7 +8,9 @@ class Mail {
      */
     constructor(id, password) {
         try {
-            if (!id.split('@')[1])   id += "@naver.com";
+            if (!id.split('@')[1])
+                id += "@naver.com";
+                
             const transporter = node_mailer.createTransport({
                 service: 'naver',
                 host: 'smtp.naver.com',
@@ -35,29 +37,62 @@ class Mail {
      * @param {String} title 
      * @param {String} description 
      * @param {Boolean} isHtml 
-     * @returns {{from: String, to: String, subject: String, text: String, html?: String}}
+     * @returns {{from: String, to: String, subject: String, text: String, html?: String, attachments?: Array}}
      */
-    createMailOption(to, title, description = "Null", isHtml = false) {
-        const mailOptions = {
+    createMailOption(to, title, description = "Nothing Here", isHtml = false) {
+        this.mailOptions = {
             from: this.id,
             to,
             subject: title,
         };
         if (isHtml)
-            mailOptions.html = description;
+            this.mailOptions.html = description;
         else
-            mailOptions.text = description;
-    
-        return mailOptions;
+            this.mailOptions.text = description;
+
+        return this.mailOptions;
     }
 
     /**
-     * @param {{from: String, to: String, subject: String, text: String, html?: String}} mailOptions 
+     * @param {String} path 
+     * @param {String?} filename
      */
-    send(mailOptions) {
+    addAttachments(path, filename) {
+        if (this.mailOptions) {
+            let attachment = {};
+            attachment.path = path;
+
+            if (!this.mailOptions.attachments)
+                this.mailOptions.attachments = [];
+            if (filename)
+                attachment.filename = filename;
+            
+            this.mailOptions.attachments.push(attachment);
+        } else {
+            this.mailOptions = {};
+            let attachment = {};
+            attachment.path = path;
+            this.mailOptions.attachments = [];
+
+            if (filename)
+                attachment.filename = filename;
+            
+            this.mailOptions.attachments.push(attachment);
+        }
+
+        return this.mailOptions;
+    }
+
+    /**
+     * @param {{from: String, to: String, subject: String, text: String, html?: String, attachments?: Array}} mailOptions 
+     */
+    send(mailOptions=undefined) {
+        if (!mailOptions)
+            mailOptions = this.mailOptions;
+        
         this.transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                throw new Error(error)
+                throw new Error('[Mail] Authorization failed! Are you use a 2FA?');
             } else {
                 console.log(`[Mail] Send mail to ${mailOptions.to}`);
             }
