@@ -2,13 +2,18 @@
 
 ## 가벼운 네이버 메일러  
 
-## install
+## install  
+### npm
 ```
-$ npm install --save naver-mailer
+$ npm install naver-mailer
+```  
+## yarn
+```
+$ yarn add naver-mailer
 ```  
 
 ## Example
-```js
+```javascript
 const NaverMail = require('naver-mailer');
 const mailer = new NaverMail('id', 'super secret password');
 
