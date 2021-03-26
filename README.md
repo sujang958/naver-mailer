@@ -13,14 +13,16 @@ $ yarn add naver-mailer
 ```  
 
 ## Example
+### ES5
 ```javascript
-const NaverMail = require('naver-mailer');
+const NaverMailer = require('naver-mailer').default;
 const mailer = new NaverMail('id', 'super secret password');
 
 mailer.send(mailer.createMailOption('to@to.com', 'title', 'description', false));
 ```  
+### ES6
 ```javascript
-const NaverMail = require('naver-mailer');
+import NaverMail from 'naver-mailer';;
 const mailer = new NaverMail('id', 'super secret password');
 
 mailer.createMailOption('to@to.com', 'title', 'description', false);

@@ -1,5 +1,4 @@
-const node_mailer = require('nodemailer');
-
+import node_mailer from 'nodemailer';
 
 class Mail {
     /**
@@ -40,11 +39,18 @@ class Mail {
      * @returns {{from: String, to: String, subject: String, text: String, html?: String, attachments?: Array}}
      */
     createMailOption(to, title, description = "Nothing Here", isHtml = false) {
-        this.mailOptions = {
-            from: this.id,
-            to,
-            subject: title,
-        };
+        if (!this.mailOptions) {
+            this.mailOptions = {
+                from: this.id,
+                to,
+                subject: title,
+            };
+        } else {
+            this.mailOptions.from;
+            this.mailOptions.id = id;
+            this.mailOptions.to= to;
+        }
+        
         if (isHtml)
             this.mailOptions.html = description;
         else
@@ -100,4 +106,4 @@ class Mail {
     }
 }
 
-module.exports = Mail;
+export default Mail;
