@@ -31,12 +31,13 @@ class Mail {
         }
     }
 
-    /** 
+    /**
+     * 
      * @param {String} to 
      * @param {String} title 
      * @param {String} description 
      * @param {Boolean} isHtml 
-     * @returns {{from: String, to: String, subject: String, text: String, html?: String, attachments?: Array}}
+     * @returns {import('../typings/index').mailOption}
      */
     createMailOption(to, title, description = "Nothing Here", isHtml = false) {
         if (!this.mailOptions) {
@@ -62,6 +63,7 @@ class Mail {
     /**
      * @param {String} path 
      * @param {String?} filename
+     * @returns {import('../typings/index').mailOption}
      */
     addAttachments(path, filename) {
         if (this.mailOptions) {
@@ -90,7 +92,7 @@ class Mail {
     }
 
     /**
-     * @param {{from: String, to: String, subject: String, text: String, html?: String, attachments?: Array}} mailOptions 
+     * @param {import('../typings/index').mailOption} mailOptions 
      */
     send(mailOptions=undefined) {
         if (!mailOptions)
